@@ -1,4 +1,10 @@
 package pages;
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
+
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -23,6 +29,7 @@ public class ManageCategoryPage {
 	@FindBy(xpath = "//input[@name='top_menu'and@value='no']")	private WebElement showontopnobutton;
 	@FindBy(xpath = "//input[@value='no']")	private WebElement showonleftno;
 	@FindBy(xpath = "//button[text()='Save']")	private WebElement savebutton;
+	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")private WebElement categorycreatedalert;
 
 	public void clickOnManageCategory() {
 		managecategorylink.click();
@@ -32,12 +39,7 @@ public class ManageCategoryPage {
 		newcategorylink.click();
 	}
 
-	public void clickCategoryfield() {
-		categoryfield.click();
-		categoryfield.sendKeys("Cooking Essentials");
-	}
-
-	public void enterCategory(String categoryname) {
+		public void enterCategory(String categoryname) {
 		categoryfield.sendKeys(categoryname);
 	}
 
@@ -45,15 +47,34 @@ public class ManageCategoryPage {
 		discount.click();
 	}
 
-	public void choosefile() {
-		choosefilebutton.sendKeys(Constant.IMAGEDATAFILE);
+	public void choosefile() throws AWTException {
+		choosefilebutton.sendKeys(Constant.IMAGEFILE);
+		/*choosefilebutton.click();
+		StringSelection selection=new StringSelection(Constant.IMAGEFILE);
+		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(selection, null);
+		Robot robot=new Robot();
+		robot.delay(2500);
+		robot.keyPress (KeyEvent.VK_ENTER);
+		robot.keyRelease (KeyEvent.VK_ENTER);
+		robot.keyPress (KeyEvent.VK_CONTROL);
+		robot.keyPress (KeyEvent.VK_V);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		robot.keyRelease(KeyEvent.VK_V);
+		robot.keyPress (KeyEvent.VK_ENTER);
+		robot.keyRelease(KeyEvent.VK_ENTER);*/
+	}
+	public void scrolldown()
+	{
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+				
+				js.executeScript("window.scrollBy(0,500)", "");
 	}
 
 	public void showOnTop() {
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("arguments[0].click();", showontopnobutton);
-		js.executeScript("window.scrollBy(0,350)", "");
-		// showontopnobutton.click();
+		//JavascriptExecutor js = (JavascriptExecutor) driver;
+		//js.executeScript("arguments[0].click();", showontopnobutton);
+		//js.executeScript("window.scrollBy(0,350)", "");
+		showontopnobutton.click();
 
 	}
 
@@ -65,9 +86,14 @@ public class ManageCategoryPage {
 	}
 
 	public void clickOnSave() {
-		// JavascriptExecutor js = (JavascriptExecutor)driver;
-		// js.executeScript("arguments[0].click();", savebutton);
+		 JavascriptExecutor js = (JavascriptExecutor)driver;
+		 js.executeScript("arguments[0].click();", savebutton);
 		// js.executeScript("window.scrollBy(0,400)", "");
-		savebutton.click();
+		//savebutton.click();
+	}
+	
+	public boolean categoryCreatedAlert()
+	{
+	return categorycreatedalert.isDisplayed();
 	}
 }

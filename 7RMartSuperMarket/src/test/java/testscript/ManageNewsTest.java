@@ -2,9 +2,11 @@ package testscript;
 
 import java.io.IOException;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import automationcore.Base;
+import constants.Messages;
 import pages.LoginPage;
 import pages.ManageNewsPage;
 import utilities.ExcelUtility;
@@ -24,6 +26,9 @@ public class ManageNewsTest extends Base {
 		String newsdata = ExcelUtility.getStringData(0, 0, "AddNewsPage");
 		news.newNewsField(newsdata);
 		news.clickSave();
+		boolean issuccessalertdisplayed=news.successAlert();
+		Assert.assertTrue(issuccessalertdisplayed, Messages.NEWSADDITIONFAILUREERROR);
+	
 	}
 
 	@Test(description = "Verify whether the user can search for a news")
@@ -39,6 +44,8 @@ public class ManageNewsTest extends Base {
 		String searchnews = ExcelUtility.getStringData(0, 0, "AddNewsPage");
 		news.searchNewsFiled(searchnews);
 		news.searchsubmit();
+		boolean ismanagenewsdisplayed=news.searchManageDisplayed();
+		Assert.assertTrue(ismanagenewsdisplayed, Messages.NEWSSEARCHFAILUREERROR);		
 	}
 
 }

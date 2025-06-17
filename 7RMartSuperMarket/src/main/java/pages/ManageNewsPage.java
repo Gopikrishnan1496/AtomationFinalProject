@@ -20,6 +20,8 @@ public class ManageNewsPage {
 	@FindBy(xpath = "//a[@href='javascript:void(0)']")	private WebElement searchbutton;
 	@FindBy(xpath = "//input[@class='form-control']")	private WebElement searchnewsfield;
 	@FindBy(xpath = "//button[@name='Search']")	private WebElement submitsearch;
+	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")private WebElement successalert;
+	@FindBy(xpath = "//h4[text()='Search Manage News']")private WebElement searchmanagedisplayed;
 
 	public void clickManageNews() {
 		managenewslink.click();
@@ -46,6 +48,16 @@ public class ManageNewsPage {
 	public void searchNewsFiled(String searchnews) {
 		searchnewsfield.click();
 		searchnewsfield.sendKeys(searchnews);
+	}
+	
+	public boolean successAlert()
+	{
+	  return successalert.isDisplayed();
+	}
+	
+	public boolean searchManageDisplayed()
+	{
+		return searchmanagedisplayed.isDisplayed();
 	}
 
 	public void searchsubmit() {

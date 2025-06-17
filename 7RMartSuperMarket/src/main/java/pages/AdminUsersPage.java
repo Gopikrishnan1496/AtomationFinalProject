@@ -24,6 +24,8 @@ public class AdminUsersPage {
 	@FindBy(xpath = "//input[@id='un']")	private WebElement usernamesearch;
 	@FindBy(xpath = "//select[@id='ut']")	private WebElement usertypesearch;
 	@FindBy(xpath = "//button[@name='Search']")	private WebElement clicksearch;
+	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")private WebElement useraddedalert;
+	@FindBy(xpath = "//a[@class='btn btn-rounded btn-danger']")private WebElement searchadminuser;
 
 	public void clickOnAdminUsers() {
 		adminuserslink.click();
@@ -34,10 +36,12 @@ public class AdminUsersPage {
 	}
 
 	public void enterUsername(String username1) {
+		usernamefield.click();
 		usernamefield.sendKeys(username1);
 	}
 
 	public void enterPassword(String password1) {
+		passwordfield.click();
 		passwordfield.sendKeys(password1);
 	}
 
@@ -65,5 +69,15 @@ public class AdminUsersPage {
 
 	public void enterSearch() {
 		clicksearch.click();
+	}
+	
+	public boolean userAddedAlert()
+	{
+		return useraddedalert.isDisplayed();
+	}
+	
+	public boolean searchAdminUser()
+	{
+		return searchadminuser.isDisplayed();
 	}
 }

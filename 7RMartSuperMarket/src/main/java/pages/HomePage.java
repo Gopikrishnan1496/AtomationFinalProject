@@ -18,6 +18,7 @@ public class HomePage {
 	private WebElement adminlink;
 	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/logout']")
 	private WebElement logoutlink;
+	@FindBy(xpath = "//b[text()='7rmart supermarket']")private WebElement supermarket;
 
 	public void clickOnAdmin() {
 		adminlink.click();
@@ -25,6 +26,11 @@ public class HomePage {
 
 	public void clickOnLogout() {
 		logoutlink.click();
+	}
+	
+	public boolean Supermarket()
+	{
+		return supermarket.isDisplayed();
 	}
 
 }

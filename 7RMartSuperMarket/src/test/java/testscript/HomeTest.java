@@ -2,9 +2,11 @@ package testscript;
 
 import java.io.IOException;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import automationcore.Base;
+import constants.Messages;
 import pages.HomePage;
 import pages.LoginPage;
 import utilities.ExcelUtility;
@@ -21,5 +23,10 @@ public class HomeTest extends Base {
 		HomePage homepage = new HomePage(driver);
 		homepage.clickOnAdmin();
 		homepage.clickOnLogout();
+		
+		boolean issupermarketdisplayed=homepage.Supermarket();
+		Assert.assertTrue(issupermarketdisplayed, Messages.HOMEPAGELOGOUTERROR);
+		
+
 	}
 }
