@@ -14,7 +14,7 @@ public class AdminUsersPage {
 		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(xpath = "//i[@class=\"fas fa-arrow-circle-right\"]")private WebElement adminuserslink;
+	
 	@FindBy(xpath = "//a[@class=\"btn btn-rounded btn-danger\"]")private WebElement newbutton;
 	@FindBy(xpath = "//input[@id='username']")	private WebElement usernamefield;
 	@FindBy(xpath = "//input[@id='password']")	private WebElement passwordfield;
@@ -26,49 +26,57 @@ public class AdminUsersPage {
 	@FindBy(xpath = "//button[@name='Search']")	private WebElement clicksearch;
 	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")private WebElement useraddedalert;
 	@FindBy(xpath = "//a[@class='btn btn-rounded btn-danger']")private WebElement searchadminuser;
+	
 
-	public void clickOnAdminUsers() {
-		adminuserslink.click();
-	}
+	
 
-	public void clickOnNewButton() {
+	public AdminUsersPage clickOnNewButton() {
 		newbutton.click();
+		return this;
 	}
 
-	public void enterUsername(String username1) {
+	public AdminUsersPage enterUsername(String username1) {
 		usernamefield.click();
 		usernamefield.sendKeys(username1);
+		return this;
 	}
 
-	public void enterPassword(String password1) {
+	public AdminUsersPage enterPassword(String password1) {
 		passwordfield.click();
 		passwordfield.sendKeys(password1);
+		return this;
 	}
 
-	public void selectUserType() {
+	public AdminUsersPage selectUserType() {
 		Select select = new Select(usertype);
 		select.selectByValue("admin");
+		return this;
 	}
 
-	public void clickOnSave() {
+	public AdminUsersPage clickOnSave() {
 		savebutton.click();
+		return this;
 	}
 
-	public void clickOnSearch() {
+	public AdminUsersPage clickOnSearch() {
 		searchbutton.click();
+		return this;
 	}
 
-	public void enterUserSearch(String user) {
+	public AdminUsersPage enterUserSearch(String user) {
 		usernamesearch.sendKeys(user);
+		return this;
 	}
 
-	public void enterUserTypeSearch() {
+	public AdminUsersPage enterUserTypeSearch() {
 		Select select = new Select(usertypesearch);
 		select.selectByValue("admin");
+		return this;
 	}
 
-	public void enterSearch() {
+	public AdminUsersPage enterSearch() {
 		clicksearch.click();
+		return this;
 	}
 	
 	public boolean userAddedAlert()

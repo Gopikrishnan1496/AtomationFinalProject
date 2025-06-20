@@ -19,13 +19,17 @@ public class HomePage {
 	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/logout']")
 	private WebElement logoutlink;
 	@FindBy(xpath = "//b[text()='7rmart supermarket']")private WebElement supermarket;
+	@FindBy(xpath = "//i[@class=\"fas fa-arrow-circle-right\"]")
+	private WebElement adminuserslink;
 
-	public void clickOnAdmin() {
+	public HomePage clickOnAdmin() {
 		adminlink.click();
+		return this;
 	}
 
-	public void clickOnLogout() {
+	public LoginPage clickOnLogout() {
 		logoutlink.click();
+		return new LoginPage(driver);
 	}
 	
 	public boolean Supermarket()
@@ -33,4 +37,8 @@ public class HomePage {
 		return supermarket.isDisplayed();
 	}
 
+	public AdminUsersPage clickOnAdminUsers() {
+		adminuserslink.click();
+		return new AdminUsersPage(driver);
+	}
 }

@@ -67,7 +67,7 @@ public class ManageCategoryPage {
 	{
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 				
-				js.executeScript("window.scrollBy(0,500)", "");
+				js.executeScript("window.scrollBy(0,1550)", "");
 	}
 
 	public void showOnTop() {

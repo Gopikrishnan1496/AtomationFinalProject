@@ -31,6 +31,7 @@ public class ManageCategoryTest extends Base {
 		managecategory.scrolldown();
 		managecategory.choosefile();
 		managecategory.scrolldown();
+		managecategory.scrolldown();
 		managecategory.showOnTop();
 		managecategory.showOnLeft();
 		managecategory.scrolldown();
